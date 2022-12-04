@@ -130,7 +130,6 @@ loom {
       inherit client
       name = "Run Client"
       runDir "runClient"
-      // remapArchives = true
       if (username.length() > 0) {
         programArgs "--username", username
       }
@@ -139,7 +138,6 @@ loom {
       inherit server
       name = "Run Server"
       runDir "runServer"
-      // remapArchives = true
     }
   }
 }
@@ -183,13 +181,7 @@ jar {
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      // add all the jars that should be included when publishing to maven
-      artifact(remapJar) {
-        builtBy remapJar
-      }
-      artifact(sourcesJar) {
-        builtBy remapSourcesJar
-      }
+			from components.java
     }
   }
 
